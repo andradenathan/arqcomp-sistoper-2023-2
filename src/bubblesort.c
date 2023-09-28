@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 
 void swap(int* a, int* b) {
     int aux = *a;
@@ -9,18 +8,18 @@ void swap(int* a, int* b) {
 
 void bubble_sort(int* A, int tamanho) {
     int i, j, aux;
-    bool swapped;
+    int swapped;
 
     for(i = 0; i < tamanho; i++) {
-        swapped = false;
+        swapped = 0;
         for(j = 0; j < tamanho - i - 1; j++) {
             if(A[j] > A[j+1]) {
                 swap(&A[j], &A[j+1]);
-                swapped = true;
+                swapped = 1;
             }
         }
         
-        if(swapped == false) {
+        if(swapped == 0) {
             break;
         }
     }
