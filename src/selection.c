@@ -1,36 +1,40 @@
 #include <stdio.h>
 
-void troca(int vet[], int i, int j) {
-	int temp;
-	temp = vet[i];
-	vet[i] = vet[j];
-	vet[j] = temp;
+// Função para trocar dois elementos do vetor
+void swapElements(int array[], int firstIndex, int secondIndex) {
+	int tempValue;
+	tempValue = array[firstIndex];
+	array[firstIndex] = array[secondIndex];
+	array[secondIndex] = tempValue;
 }
 
-void selection(int vet[], int tam) {
-	int i, j, idMenor;
+// Função de ordenação por seleção
+void selectionSort(int array[], int size) {
+	int start, current, minIndex;
 
-	for (i = 0; i <= tam - 1; i++) {
-		idMenor = i;
+	for (start = 0; start < size - 1; start++) {
+		minIndex = start;
 
-		for (j = i + 1; j < tam; j++) {
-			if (vet[j] < vet[idMenor]) {
-				idMenor = j;
+		for (current = start + 1; current < size; current++) {
+			if (array[current] < array[minIndex]) {
+				minIndex = current;
 			}
 		}
 
-		if (i != idMenor) {
-			troca(vet, i, idMenor);
+		if (start != minIndex) {
+			swapElements(array, start, minIndex);
 		}
 	}
 }
 
 int main() {
-	int vet[] = {5, 4, 3, 2, 1};
+	int numbers[] = {5, 4, 3, 2, 1};
+	int length = sizeof(numbers) / sizeof(numbers[0]);
 
-	selection(vet, 5);
+	selectionSort(numbers, length);
 
-	for (int i = 0; i < 5; i++) {
-		printf("%d\n", vet[i]);
+	for (int index = 0; index < length; index++) {
+		printf("%d\n", numbers[index]);
 	}
+	return 0;
 }
